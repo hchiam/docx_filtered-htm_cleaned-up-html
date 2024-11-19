@@ -1,0 +1,257 @@
+<fieldset>
+  <p id="description"><u><b>Note:</b></u> Save your word <b>.docx</b> as "Web page, <b>FILTERED (*.htm;*.html)</b>" &rarr; then <b>copy the text</b> of that .htm file, and &rarr; then use this tool to turn that text into cleaner <b>HTML</b>.</p>
+</fieldset>
+
+<fieldset>
+  <h2 id="pasteTitle">Paste your FILTERED (*.htm;*.html) here:</h2>
+  <textarea id="input"></textarea>
+  <p>Or select a .htm or .html file: <input id="file" type="file" accept=".htm, .html"></p>
+</fieldset>
+
+<fieldset>
+  <h2>Replacement options:</h2>
+  <p><label><input type="checkbox" id="removeStyleAttributes"> Remove <code>style</code> attributes</label></p>
+  <p><label><input type="checkbox" id="removeStyleTag" checked> Remove <code>&lt;style&gt;</code> tag</label></p>
+  <p><label><input type="checkbox" id="removeClassAttributes" checked> Remove <code>class</code> attributes (used by the <code>&lt;style&gt;</code> tag)</label></p>
+  <p><label><input type="checkbox" id="removeEmptySpace" checked> Remove empty paragraphs <code>&lt;p&gt;</code> tags</label></p>
+  <p><input type="checkbox" checked disabled> <label>Replace $("<input id="replaceWhat" value='[class^="MsoListParagraphCxSp"]'>")</label> <label>with <input id="replaceWithWhat" value="<li/>"></label></p>
+</fieldset>
+
+<fieldset>
+  <h2>Cleaned-up HTML output:</h2>
+  <textarea id="output"></textarea>
+</fieldset>
+
+<script>
+  function defaultToExampleInput() {
+    $("#input").val(`<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+h1
+	{mso-style-link:"Heading 1 Char";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2E74B5;
+	font-weight:normal;}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Calibri Light",sans-serif;
+	color:#2E74B5;
+	font-weight:normal;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-link:"Heading 1";
+	font-family:"Calibri Light",sans-serif;
+	color:#2E74B5;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-family:"Calibri Light",sans-serif;
+	color:#2E74B5;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-CA link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<h1>Heading 1</h1>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h2>Heading 2</h2>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Normal <b>bolded</b> <i>italic</i> <u>underlined</u> link to
+<a href="https://www.google.com/">https://www.google.com/</a> </p>
+
+<p class=MsoNormal>Another paragraph. </p>
+
+<p class=MsoNormal>Bullet points:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>�<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>A</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>�<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>B</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'><span
+style='font-family:Symbol'>�<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>C</p>
+
+<p class=MsoNormal>Numbered:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>One</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Two</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Three</p>
+
+<div style='border:none;border-bottom:solid windowtext 1.5pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoNormal style='border:none;padding:0cm'>Horizontal bar:</p>
+
+</div>
+
+<p class=MsoNormal>Last paragraph.</p>
+
+<p class=MsoNormal><b><i><u><span style='color:red'>R</span></u></i></b><span
+style='color:red'>ed</span> and <span style='color:#00B0F0'>bl<b>u<i><u>e</u></i></b></span><b>
+in</b> the same sentence.</p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=236 valign=top style='width:233.75pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>Hi</p>
+  </td>
+  <td width=235 valign=top style='width:233.75pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>A</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=236 valign=top style='width:233.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>B</p>
+  </td>
+  <td width=235 valign=top style='width:233.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>C</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=236 valign=top style='width:233.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+  <td width=235 valign=top style='width:233.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>&nbsp;</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>
+`);
+  }
+</script>

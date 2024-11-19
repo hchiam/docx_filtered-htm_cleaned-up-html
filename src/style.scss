@@ -1,0 +1,65 @@
+:root {
+  --accent-colour: lime;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: var(--accent-colour);
+}
+
+h2,
+p {
+  max-inline-size: 100%;
+}
+
+fieldset {
+  margin-block-start: 5px;
+}
+
+textarea,
+input {
+  background: white;
+  color: black;
+  &::selection {
+    background: black;
+    color: white;
+  }
+}
+
+textarea {
+  width: 100%;
+  height: 4.5rem;
+  &#output {
+    min-height: 10.5rem;
+  }
+}
+
+input:not([type="checkbox"]) {
+  width: 10ch;
+}
+
+input#file,
+input#replaceWhat {
+  width: 30ch;
+}
+
+input#replaceWhat,
+input#replaceWithWhat {
+  height: 1.5rem;
+}
+
+#description,
+#description * {
+  color: var(--accent-colour);
+}
+#description u {
+  text-decoration-color: black;
+  text-underline-offset: 0.1rem;
+  font-size: 2.5rem;
+}
+#description * {
+  background: var(--accent-colour);
+  color: black;
+  border-radius: 5px;
+  padding-inline: 5px;
+}
